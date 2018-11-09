@@ -1,0 +1,14 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 20px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 10px 20px;
+}
