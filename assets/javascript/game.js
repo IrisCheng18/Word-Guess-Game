@@ -1,7 +1,7 @@
 var wordGuessGame = {
     winsCounter: 0,
     currentWord: "",
-    numOfGuessRemaining: 12,
+    numOfGuessRemaining: 15,
     lettersGuessed: "",
     userInput: "", // for display purpose
     randomWord: "",
@@ -32,6 +32,10 @@ var wordGuessGame = {
         return str.includes(char);
     },
 
+    checkInputLetter: function (char = "") {
+        return /^[a-zA-Z]/.test(char);
+    },
+
     updateStats: function () {
         document.querySelector("#wins").innerHTML = "Wins: " + this.winsCounter;
         document.querySelector("#currentWord").innerHTML = "Current Word: " + this.currentWord;
@@ -52,6 +56,11 @@ var wordGuessGame = {
     },
 
     play: function (keyPressed) {
+        // check the input is a letter instead of the numbers or symbols etc.
+        if (!this.checkInputLetter(keyPressed)) {
+            return;
+        }
+
         // check whether the letter is already selected
         if (this.checkLetterAlreadyGuessed(keyPressed, this.lettersGuessed)) {
             // quit the onkeyup() to select another letter
